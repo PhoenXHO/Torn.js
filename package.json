@@ -5,11 +5,12 @@
 	"main": "dist/index.js",
 	"types": "dist/index.d.ts",
 	"scripts": {
-		"build": "tsc",
-		"dev": "tsc --watch",
-		"lint": "eslint src --ext .ts",
+		"build": "tsup src/index.ts --format esm,cjs --dts",
+		"dev": "tsx watch src/index.ts",
+		"test": "vitest",
+		"lint": "eslint \"src/**/*.ts\"",
 		"format": "prettier --write \"src/**/*.ts\"",
-		"test": "echo \"Error: no test specified\" && exit 1"
+		"prepare": "npm run build"
 	},
 	"keywords": [
 		"torn",
@@ -20,12 +21,20 @@
 	"author": "PhoenXHO",
 	"license": "MIT",
 	"devDependencies": {
-		"@types/node": "^20.0.0",
+		"@types/node": "^20.19.26",
 		"@typescript-eslint/eslint-plugin": "^6.0.0",
 		"@typescript-eslint/parser": "^6.0.0",
-		"eslint": "^8.0.0",
-		"prettier": "^3.0.0",
-		"typescript": "^5.0.0"
+		"eslint": "^8.57.1",
+		"eslint-config-prettier": "^10.1.8",
+		"prettier": "^3.7.4",
+		"tsup": "^8.5.1",
+		"typescript": "^5.9.3",
+		"vitest": "^4.0.15"
 	},
-	"dependencies": {}
+	"dependencies": {
+		"bottleneck": "^2.19.5",
+		"cross-fetch": "^4.1.0",
+		"lru-cache": "^11.2.4",
+		"zod": "^4.1.13"
+	}
 }
